@@ -3,7 +3,6 @@ import Player from "./spaceShip.js";
 class ShooterGame {
     constructor (target, background) {
         this.DOM = document.querySelector(target);
-        // this.map = [];
         this.player = new Player();
         this.background = background;
        

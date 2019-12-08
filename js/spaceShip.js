@@ -1,9 +1,9 @@
 class Player {
-    constructor(shipColor, position) {
+    constructor(shipColor) {
         this.shipColor = shipColor || 'blue';
-        this.position = position;
         this.keyboard;
         this.contorlKeys();
+        this.laserRate = 3;
     }
     
         contorlKeys(){
@@ -17,8 +17,12 @@ class Player {
         renderShip = (DOM) => {
             const ship = `<img id="playerShip" src="../img/player-ships/playerShip1_${this.shipColor}.png"></img>`;
             DOM.innerHTML = ship;
+            console.log(ship);
+            
         } 
         
+      
+       
 }
 export default Player;
 
