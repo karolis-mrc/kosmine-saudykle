@@ -1,0 +1,19 @@
+.game {
+    display: inline-block;
+    overflow: hidden;
+    height: 657px;
+    width: 1349px;
+    
+}
+
+    .space {
+    background-image: url('../img/bcg/main-bcg.png');
+    height: 100%;
+    width: 100%;
+    -webkit-animation: slide 30s linear infinite;   
+    }   
+
+    @-webkit-keyframes slide {
+    from { background-position: 0 0; }
+    to { background-position: -3824px 0; }
+    }
