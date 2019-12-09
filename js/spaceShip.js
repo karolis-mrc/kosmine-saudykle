@@ -15,7 +15,7 @@ class Player {
         }
 
         renderShip = (DOM) => {
-            const ship = `<img id="playerShip" src="../img/player-ships/playerShip1_${this.shipColor}.png"></img>`;
+            const ship = `<img id="playerShip" src="./img/player-ships/playerShip1_${this.shipColor}.png"></img>`;
             DOM.innerHTML = ship;
             console.log(ship);
             
