@@ -18,7 +18,7 @@
     to { background-position: -3824px 0; }
     }
 
-#playerShip {
+.ship {
     display: inline-block;
     float: left;
     transform: rotate(90deg);

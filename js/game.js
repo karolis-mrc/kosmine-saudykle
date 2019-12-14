@@ -1,4 +1,5 @@
 import Player from "./spaceShip.js";
+import Laser from "./laser.js";
 
 class ShooterGame {
     constructor (target, background) {
@@ -7,6 +8,7 @@ class ShooterGame {
         this.DOM = document.querySelector(target);
         this.player = new Player();
         this.background = background;
+        this.lasers = [];
         
        
         this.init();
@@ -34,7 +36,19 @@ class ShooterGame {
             
             this.player.move( this.dt );
 
+// kulku atsiradimas ir skrydimas
+            // tanko objektas savo viduje tai suvaldo
             
+            if ( this.player.didFire() ) {
+                this.lasers = [...this.lasers, new Laser( this.game, ...this.player.positionInfo() )];
+                
+            }
+            for ( let l=0; l<this.lasers.length; l++ ) {
+                const laser = this.lasers[l];
+                laser.move();
+                 
+            }
+
            window.requestAnimationFrame(() => {
                 this.start()
             })

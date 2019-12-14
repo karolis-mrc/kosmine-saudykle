@@ -1,10 +1,13 @@
 class Player {
-    constructor() {
+    constructor () {
         this.position;
         this.screenSize = {width: 1365, height: 655};
         this.shipSize = { width: 66, height: 50};
         this.shipSpeed = 300;
         this.keyboard;
+        this.fireRate = 1; 
+        this.lastFire = 0;
+        this.fireHappened = false;
         this.keyboardPressed = {
             up: false,
             down: false,
@@ -91,7 +94,25 @@ class Player {
         }) 
     } 
 
-    
+    fire(){
+        const time = Date.now();
+        if ( time - this.lastFire >= this.fireRate * 1000 ) {
+            this.lastFire = time;
+            this.fireHappened = true;
+        }
+    }
+
+    didFire = () => {
+        if ( this.fireHappened ) {
+            this.fireHappened = false;
+            return true;
+        }
+        return false;
+    }
+
+    positionInfo = () => {
+        return [ this.position.top, this.position.left ];
+    }
 
     move = ( dt ) => {
         if ( this.keyboardPressed.up ) {
@@ -111,9 +132,6 @@ class Player {
         }
         
         
-        
-
-        // saugomes, jog neisvaziuotu is arenos ribu
         if ( this.position.top < 10 )
              this.position.top = 10;
             
@@ -125,7 +143,7 @@ class Player {
 
         if ( this.position.left > this.screenSize.width / 2 - this.shipSize.width ) 
             this.position.left = this.screenSize.width / 2 - this.shipSize.width ;
-            console.log(this.position.left);
+            
             
 
         document.querySelector('.ship').style.top = this.position.top + 'px';
