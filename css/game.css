@@ -24,3 +24,10 @@
     transform: rotate(90deg);
     position: absolute;   
 }
+
+.laser {
+    display: inline-block;
+    float: left;
+    transform: rotate(90deg);
+    position: absolute; 
+}

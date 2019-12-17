@@ -36,17 +36,15 @@ class ShooterGame {
             
             this.player.move( this.dt );
 
-// kulku atsiradimas ir skrydimas
-            // tanko objektas savo viduje tai suvaldo
-            
+
             if ( this.player.didFire() ) {
-                this.lasers = [...this.lasers, new Laser( this.game, ...this.player.positionInfo() )];
+                this.lasers = [new Laser( ...this.player.positionInfo(), ...this.player.weaponInfo())];
                 
             }
             for ( let l=0; l<this.lasers.length; l++ ) {
                 const laser = this.lasers[l];
-                laser.move();
-                 
+                laser.move(this.dt, ...this.player.positionInfo());
+                
             }
 
            window.requestAnimationFrame(() => {

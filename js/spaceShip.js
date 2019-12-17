@@ -36,7 +36,7 @@ class Player {
                         style ="width: ${this.shipSize.width}px;
                                 height: ${this.shipSize.height}px;
                                 top: ${this.position.top}px;
-                                left: ${this.position.left}px">`;
+                                left: ${this.position.left}px"></img>`;
         DOM.innerHTML = ship;
      
         window.addEventListener('keydown', (e) => {
@@ -111,9 +111,14 @@ class Player {
     }
 
     positionInfo = () => {
-        return [ this.position.top, this.position.left ];
-    }
+        return [ this.position.top, this.position.left ];    
+    } 
 
+    weaponInfo = () => {
+        return[ this.shipSize.height, this.shipSize.width ];
+    }
+    
+    
     move = ( dt ) => {
         if ( this.keyboardPressed.up ) {
             this.position.top -= this.shipSpeed * dt;    
@@ -130,7 +135,7 @@ class Player {
         if ( this.keyboardPressed.right ) {
             this.position.left += this.shipSpeed * dt;
         }
-        
+      
         
         if ( this.position.top < 10 )
              this.position.top = 10;
@@ -147,8 +152,11 @@ class Player {
             
 
         document.querySelector('.ship').style.top = this.position.top + 'px';
-        document.querySelector('.ship').style.left = this.position.left + 'px';
-    }
+        document.querySelector('.ship').style.left = this.position.left + 'px';  
+    
+  
+
+    }  
 }
 
 export default Player;
